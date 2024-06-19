@@ -1,6 +1,6 @@
 node
 {
- 
+ def nodeHome = tool name: 'nodejs 22.3'
   stage("CheckOutCodeGit")
   {
    git branch: 'master', credentialsId: '65fb834f-a83b-4fe7-8e11-686245c47a65', url: https://github.com/moffty22/nodejs-application'
@@ -8,31 +8,23 @@ node
  
  stage("Build")
  {
- nodejs(nodeJSInstallationName: 'nodejs 22.3') {
         sh 'npm install'
-    }
- }  
+   }  
  
   stage('ExecuteSonarQubeReport') {
-     nodejs(nodeJSInstallationName: 'nodejs 22.3') {
-        sh 'npm run sonar'
+            sh 'npm run sonar'
     }
-      
-        } 
-		
+    
+     
     stage('UploadintoNexus') {
-       nodejs(nodeJSInstallationName: 'nodejs 22.3') {
-          sh 'npm publish'
+                 sh 'npm publish'
       }
       
-          }	
  
  stage('RunNodeJsApp')
  {
  //sh "./scripts/run.sh"
- nodejs(nodeJSInstallationName: 'nodejs 22.3') {
         sh 'npm start &'
     }
-}    
     
 }
