@@ -3,5 +3,5 @@ COPY package.json /app/
 COPY src /app/ 
 WORKDIR /app
 RUN npm install
-//EXPOSE 9981
+EXPOSE 9981
 CMD ["node","app.js"]
