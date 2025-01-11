@@ -7,7 +7,7 @@ pipeline {
     }
   stage("CheckOutCodeGit")
   {
-   git https://github.com/moffty22/nodejs-application'
+   git 'https://github.com/moffty22/nodejs-application'
  }
  
  stage("Build")
