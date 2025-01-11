@@ -1,6 +1,10 @@
-node
-{
- def nodeHome = tool name: 'nodejs23.6.0'
+pipeline {
+    agent any
+
+
+    tools {
+        nodejs 'nodejs23.6.0'
+    }
   stage("CheckOutCodeGit")
   {
    git https://github.com/moffty22/nodejs-application'
@@ -10,21 +14,4 @@ node
  {
         sh 'npm install'
    }  
- 
-  stage('ExecuteSonarQubeReport') {
-            sh 'npm run sonar'
-    }
-    
-     
-    stage('UploadintoNexus') {
-                 sh 'npm publish'
-      }
-      
- 
- stage('RunNodeJsApp')
- {
- //sh "./scripts/run.sh"
-        sh 'npm start &'
-    }
-    
 }
