@@ -1,6 +1,6 @@
 node
 {
- def nodeHome = tool name: 'nodejs 22.3'
+ def nodeHome = tool name: 'nodejs23.6.0'
   stage("CheckOutCodeGit")
   {
    git https://github.com/moffty22/nodejs-application'
